@@ -320,6 +320,45 @@
     margin-top: 30px;
   }
 
+  /* lokasi */
+  .map-icon{
+    font-size: 2.2rem;
+    margin-bottom: 6px;
+  }
+
+  .location-name{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+
+  .location-desc{
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+
+  .map-btn{
+    display: inline-block;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--ink);
+    font-family: 'EB Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 13px 30px;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .map-btn:hover, .map-btn:focus-visible{
+    background: var(--gold);
+    color: var(--cream);
+  }
+
   /* music toggle */
   #musicBtn{
     position: fixed;
@@ -460,6 +499,28 @@
           <p class="signoff">Wassalam,<br>Keluarga Riko</p>
 
           <p class="footer-note">&mdash; Kumpul Kope &middot; 28 Juni 2026 &middot; Lancang &mdash;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: lokasi -->
+    <div class="songke-wrap card-margin">
+      <div class="strip top"></div>
+      <div class="strip bottom"></div>
+      <div class="strip left"></div>
+      <div class="strip right"></div>
+      <div class="songke-inner">
+        <div class="frame">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+          <div class="center">
+            <div class="map-icon">&#128205;</div>
+            <p class="location-name">Lancang</p>
+            <p class="location-desc">Lokasi acara Kumpul Kope Riko</p>
+            <a class="map-btn" href="https://maps.app.goo.gl/T9NZTS7tH1g8wyJA9" target="_blank" rel="noopener noreferrer">Buka Lokasi</a>
+          </div>
         </div>
       </div>
     </div>
