@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan Kumpul Kope &mdash; Yeremias Yeriko</title>
+<title>Undangan Kumpul Kope &mdash; Keluarga Riko</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -16,6 +16,9 @@
     --line: #5a7280;
     --gold: #a8843f;
     --gold-soft: #c9a96a;
+    --songke-bg: #161616;
+    --songke-tile-h: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='14' viewBox='0 0 20 14'%3E%3Crect width='20' height='14' fill='%23161616'/%3E%3Crect y='1' width='20' height='1' fill='%23c9a96a'/%3E%3Crect y='12' width='20' height='1' fill='%23c9a96a'/%3E%3Crect x='2' y='3' width='2' height='8' fill='%23d4453a'/%3E%3Crect x='6' y='3' width='2' height='8' fill='%23e8b341'/%3E%3Crect x='10' y='3' width='2' height='8' fill='%234f7d4a'/%3E%3Crect x='14' y='3' width='2' height='8' fill='%23e9e4d8'/%3E%3Cpath d='M18 7 L19 4 L20 7 L19 10 Z' fill='%233f7fae'/%3E%3C/svg%3E");
+    --songke-tile-v: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='20' viewBox='0 0 14 20'%3E%3Crect width='14' height='20' fill='%23161616'/%3E%3Crect x='1' width='1' height='20' fill='%23c9a96a'/%3E%3Crect x='12' width='1' height='20' fill='%23c9a96a'/%3E%3Crect x='3' y='2' width='8' height='2' fill='%23d4453a'/%3E%3Crect x='3' y='6' width='8' height='2' fill='%23e8b341'/%3E%3Crect x='3' y='10' width='8' height='2' fill='%234f7d4a'/%3E%3Crect x='3' y='14' width='8' height='2' fill='%23e9e4d8'/%3E%3Cpath d='M7 18 L4 19 L7 20 L10 19 Z' fill='%233f7fae'/%3E%3C/svg%3E");
   }
 
   *{ box-sizing: border-box; }
@@ -50,11 +53,11 @@
   }
 
   .cover-card{
-    width: min(86vw, 380px);
+    width: 100%;
     padding: 48px 28px 38px;
     border: 1px solid var(--gold-soft);
     outline: 1px solid var(--gold-soft);
-    outline-offset: 8px;
+    outline-offset: 6px;
     text-align: center;
     background: var(--cream);
     box-shadow: 0 18px 40px -20px rgba(43,58,69,0.35);
@@ -71,6 +74,44 @@
   .cover-corner.tr{ top:-1px; right:-1px; border-left:none; border-bottom:none; }
   .cover-corner.bl{ bottom:-1px; left:-1px; border-right:none; border-top:none; }
   .cover-corner.br{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+
+  /* ---------- SONGKE BORDER (4 strip mengelilingi kartu) ---------- */
+  .songke-wrap{
+    position: relative;
+    padding: 14px;
+    background: var(--songke-bg);
+  }
+
+  #cover .songke-wrap{
+    width: min(86vw, 408px);
+  }
+
+  .songke-wrap .strip{
+    position: absolute;
+  }
+  .songke-wrap .strip.top,
+  .songke-wrap .strip.bottom{
+    left: 0; right: 0; height: 14px;
+    background-image: var(--songke-tile-h);
+    background-repeat: repeat-x;
+    background-size: 20px 14px;
+  }
+  .songke-wrap .strip.top{ top: 0; }
+  .songke-wrap .strip.bottom{ bottom: 0; }
+
+  .songke-wrap .strip.left,
+  .songke-wrap .strip.right{
+    top: 0; bottom: 0; width: 14px;
+    background-image: var(--songke-tile-v);
+    background-repeat: repeat-y;
+    background-size: 14px 20px;
+  }
+  .songke-wrap .strip.left{ left: 0; }
+  .songke-wrap .strip.right{ right: 0; }
+
+  .songke-inner{
+    position: relative;
+  }
 
   .cover-eyebrow{
     font-size: 0.72rem;
@@ -140,12 +181,13 @@
   .frame{
     border: 1px solid var(--line);
     outline: 1px solid var(--line);
-    outline-offset: 10px;
+    outline-offset: 6px;
     background: var(--cream);
     padding: 44px 26px;
     position: relative;
-    margin-bottom: 26px;
   }
+
+  .card-margin{ margin-bottom: 26px; }
 
   .frame .corner{
     position:absolute;
@@ -153,10 +195,10 @@
     height: 30px;
     border: 1.5px solid var(--gold);
   }
-  .frame .corner.tl{ top: -11px; left: -11px; border-right:none; border-bottom:none; }
-  .frame .corner.tr{ top: -11px; right: -11px; border-left:none; border-bottom:none; }
-  .frame .corner.bl{ bottom: -11px; left: -11px; border-right:none; border-top:none; }
-  .frame .corner.br{ bottom: -11px; right: -11px; border-left:none; border-top:none; }
+  .frame .corner.tl{ top: -7px; left: -7px; border-right:none; border-bottom:none; }
+  .frame .corner.tr{ top: -7px; right: -7px; border-left:none; border-bottom:none; }
+  .frame .corner.bl{ bottom: -7px; left: -7px; border-right:none; border-top:none; }
+  .frame .corner.br{ bottom: -7px; right: -7px; border-left:none; border-top:none; }
 
   .center{ text-align: center; }
 
@@ -314,18 +356,26 @@
 
   <!-- ===== COVER ===== -->
   <div id="cover">
-    <div class="cover-card">
-      <div class="cover-corner tl"></div>
-      <div class="cover-corner tr"></div>
-      <div class="cover-corner bl"></div>
-      <div class="cover-corner br"></div>
+    <div class="songke-wrap">
+      <div class="strip top"></div>
+      <div class="strip bottom"></div>
+      <div class="strip left"></div>
+      <div class="strip right"></div>
+      <div class="songke-inner">
+        <div class="cover-card">
+          <div class="cover-corner tl"></div>
+          <div class="cover-corner tr"></div>
+          <div class="cover-corner bl"></div>
+          <div class="cover-corner br"></div>
 
-      <p class="cover-eyebrow">Undangan Kumpul Kope</p>
-      <p class="kepada">Kepada Bapak / Ibu / Sdr-i</p>
-      <div class="cover-name">Tamu Undangan</div>
-      <div class="cover-divider"></div>
-      <button id="openBtn" type="button">Buka Undangan</button>
-      <p class="cover-sub">Yeremias Yeriko</p>
+          <p class="cover-eyebrow">Undangan Kumpul Kope</p>
+          <p class="kepada">Kepada Bapak / Ibu / Sdr-i</p>
+          <div class="cover-name">Tamu Undangan</div>
+          <div class="cover-divider"></div>
+          <button id="openBtn" type="button">Buka Undangan</button>
+          <p class="cover-sub">Yeremias yeiko</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -333,71 +383,85 @@
   <div id="page">
 
     <!-- Card 1: judul -->
-    <div class="frame">
-      <div class="corner tl"></div>
-      <div class="corner tr"></div>
-      <div class="corner bl"></div>
-      <div class="corner br"></div>
-      <div class="center">
-        <h1 class="title-script">Undangan</h1>
-        <p class="title-sub">Kumpul Kope</p>
-        <p class="title-date">Minggu, 28 Juni 2026</p>
+    <div class="songke-wrap card-margin">
+      <div class="strip top"></div>
+      <div class="strip bottom"></div>
+      <div class="strip left"></div>
+      <div class="strip right"></div>
+      <div class="songke-inner">
+        <div class="frame">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+          <div class="center">
+            <h1 class="title-script">Undangan</h1>
+            <p class="title-sub">Kumpul Kope</p>
+            <p class="title-date">Minggu, 28 Juni 2026</p>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Card 2: isi -->
-    <div class="frame">
-      <div class="corner tl"></div>
-      <div class="corner tr"></div>
-      <div class="corner bl"></div>
-      <div class="corner br"></div>
+    <div class="songke-wrap card-margin">
+      <div class="strip top"></div>
+      <div class="strip bottom"></div>
+      <div class="strip left"></div>
+      <div class="strip right"></div>
+      <div class="songke-inner">
+        <div class="frame">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
 
-      <p class="salam">Syaloom,</p>
+          <p class="salam">Syaloom,</p>
 
-      <p class="body-text">
-        saya turut mengundang Bapak / Ibu / Sdr/i
-        untuk hadir dalam:
-      </p>
+          <p class="body-text">
+        Saya turut mengundang Bapak / Ibu / Sdr/i
+            untuk hadir dalam acara
+          </p>
 
-      <div class="event-name">
-        <p class="label">Acara</p>
-        <p class="name">Kumpul Kope</p>
+          <div class="event-name">
+            <p class="label">Acara</p>
+            <p class="name">Kumpul Kope Riko</p>
+          </div>
 
-        <p class="label">Yeremias Yeriko</p>
+          <div class="divider-orn"></div>
+
+          <table class="details">
+            <tr>
+              <td class="k">Tanggal</td><td class="s">:</td>
+              <td class="v">Minggu, 28 Juni 2026</td>
+            </tr>
+            <tr>
+              <td class="k">Waktu</td><td class="s">:</td>
+              <td class="v">Mulai pukul 13.00 WITA &ndash; selesai</td>
+            </tr>
+            <tr>
+              <td class="k">Tempat</td><td class="s">:</td>
+              <td class="v">Lancang</td>
+            </tr>
+          </table>
+
+          <div class="divider-orn"></div>
+
+          <p class="closing">
+            Besar harapan kami agar Bapak / Ibu / Sdr-i<br>
+            dapat ikut serta dalam acara ini.
+          </p>
+
+          <p class="closing">
+            Bila ada salah kata dalam undangan ini,<br>
+            kami mohon maaf. Sekian dan terima kasih.
+          </p>
+
+          <p class="signoff">Wassalam,<br>Keluarga Riko</p>
+
+          <p class="footer-note">&mdash; Kumpul Kope &middot; 28 Juni 2026 &middot; Lancang &mdash;</p>
+        </div>
       </div>
-
-      <div class="divider-orn"></div>
-
-      <table class="details">
-        <tr>
-          <td class="k">Tanggal</td><td class="s">:</td>
-          <td class="v">Minggu, 28 Juni 2026</td>
-        </tr>
-        <tr>
-          <td class="k">Waktu</td><td class="s">:</td>
-          <td class="v">Mulai pukul 13.00 WITA &ndash; selesai</td>
-        </tr>
-        <tr>
-          <td class="k">Tempat</td><td class="s">:</td>
-          <td class="v">Lancang</td>
-        </tr>
-      </table>
-
-      <div class="divider-orn"></div>
-
-      <p class="closing">
-        Besar harapan kami agar Bapak / Ibu / Sdr-i<br>
-        dapat ikut serta dalam acara ini.
-      </p>
-
-      <p class="closing">
-        Bila ada salah kata dalam undangan ini,<br>
-        kami mohon maaf. Sekian dan terima kasih.
-      </p>
-
-     
-
-      <p class="footer-note">&mdash; Kumpul Kope &middot; 28 Juni 2026 &middot; Lancang &mdash;</p>
     </div>
   </div>
 
