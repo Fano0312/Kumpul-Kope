@@ -183,12 +183,46 @@
     position: relative;
   }
 
-  /* kartu dengan foto di belakang tulisan (hanya kartu tengah) */
-  /* ganti nama file foto di sini kalau mau ganti foto kartu */
+  /* ---------- kartu dengan foto utuh di belakang tulisan (hanya kartu tengah) ---------- */
   .frame.frame-photo{
-    background:
-      linear-gradient(rgba(246,241,230,var(--overlay)), rgba(246,241,230,var(--overlay))),
-      url('foto2.jpg') center 25% / cover no-repeat;
+    isolation: isolate;
+  }
+
+  .photo-bg{
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  /* lapisan bawah: foto yang sama, di-blur, mengisi seluruh kartu */
+  /* ganti nama file foto di sini kalau mau ganti foto kartu (ada 2 tempat: di sini dan di tag <img> di HTML) */
+  .photo-blur{
+    position: absolute;
+    inset: -24px;
+    background: url('foto2.jpg') center / cover no-repeat;
+    filter: blur(16px);
+  }
+
+  /* lapisan tengah: foto utuh selebar kartu, tepi atas-bawahnya memudar */
+  .photo-sharp{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    transform: translate(-50%, -50%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  }
+
+  /* lapisan atas: krem semi-transparan supaya tulisan terbaca */
+  .photo-tint{
+    position: absolute;
+    inset: 0;
+    background: rgba(246,241,230,var(--overlay));
   }
 
   .card-margin{ margin-bottom: 26px; }
@@ -419,7 +453,7 @@
       </div>
     </div>
 
-    <!-- Card 2: isi (dengan foto) -->
+    <!-- Card 2: isi (dengan foto utuh di belakang) -->
     <div class="songke-wrap card-margin">
       <div class="strip top"></div>
       <div class="strip bottom"></div>
@@ -427,6 +461,14 @@
       <div class="strip right"></div>
       <div class="songke-inner">
         <div class="frame frame-photo">
+
+          <!-- foto di belakang tulisan -->
+          <div class="photo-bg" aria-hidden="true">
+            <div class="photo-blur"></div>
+            <img class="photo-sharp" src="foto2.jpg" alt="">
+            <div class="photo-tint"></div>
+          </div>
+
           <div class="corner tl"></div>
           <div class="corner tr"></div>
           <div class="corner bl"></div>
