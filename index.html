@@ -23,31 +23,12 @@
 
   *{ box-sizing: border-box; }
 
-  html{
-    background: var(--cream-deep);
-  }
-
   html, body{
     margin:0; padding:0;
-  }
-
-  body{
-    background: transparent;
+    background: var(--cream-deep);
     color: var(--ink);
     font-family: 'EB Garamond', serif;
     -webkit-font-smoothing: antialiased;
-  }
-
-  /* ---------- background foto halaman undangan ---------- */
-  /* ganti nama file foto di sini kalau mau ganti foto background */
-  body::before{
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background:
-      linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.30)),
-      url('foto2.jpg') center 20% / cover no-repeat;
   }
 
   /* ---------- COVER ---------- */
@@ -99,7 +80,7 @@
     );
   }
 
-  /* ganti nama file foto di sini kalau mau ganti foto sampul */
+  /* ganti nama file foto di sini kalau mau ganti foto */
   .slide-1{
     background-image: url('foto1.jpg');
     background-position: center 65%;
@@ -201,14 +182,13 @@
   #page{
     max-width: 640px;
     margin: 0 auto;
-    padding: 28px 22px 60px;
+    padding: 28px 16px 60px;
   }
 
   .songke-wrap{
     position: relative;
     padding: 14px;
     background: var(--songke-bg);
-    box-shadow: 0 10px 28px -10px rgba(0,0,0,0.55);
   }
 
   .songke-wrap .strip{ position: absolute; }
