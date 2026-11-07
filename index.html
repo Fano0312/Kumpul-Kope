@@ -23,12 +23,31 @@
 
   *{ box-sizing: border-box; }
 
+  html{
+    background: var(--cream-deep);
+  }
+
   html, body{
     margin:0; padding:0;
-    background: var(--cream-deep);
+  }
+
+  body{
+    background: transparent;
     color: var(--ink);
     font-family: 'EB Garamond', serif;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- background foto halaman undangan ---------- */
+  /* ganti nama file foto di sini kalau mau ganti foto background */
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.30)),
+      url('foto2.jpg') center 20% / cover no-repeat;
   }
 
   /* ---------- COVER ---------- */
@@ -37,6 +56,7 @@
     inset: 0;
     z-index: 50;
     overflow: hidden;
+    background: #161616;
     transition: transform 0.9s cubic-bezier(.65,0,.35,1), opacity 0.9s ease;
   }
 
@@ -60,10 +80,10 @@
   }
 
   .slide{
+    position: relative;
     width: 50%;
     height: 100%;
     background-size: cover;
-    background-position: center top;
     background-repeat: no-repeat;
   }
 
@@ -73,18 +93,21 @@
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(0,0,0,0.1) 0%,
-      rgba(0,0,0,0.1) 50%,
-      rgba(0,0,0,0.6) 100%
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.05) 40%,
+      rgba(0,0,0,0.78) 100%
     );
   }
 
+  /* ganti nama file foto di sini kalau mau ganti foto sampul */
   .slide-1{
-    background-image: url('https://fano0312.github.io/Kumpul-Kope/lian1.jpg');
+    background-image: url('foto1.jpg');
+    background-position: center 65%;
   }
 
   .slide-2{
-    background-image: url('https://fano0312.github.io/Kumpul-Kope/lian2.jpg');
+    background-image: url('foto2.jpg');
+    background-position: center 15%;
   }
 
   /* teks cover di tengah bawah */
@@ -101,14 +124,16 @@
     font-size: 0.72rem;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.92);
     margin: 0 0 10px;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
   }
 
   .cover-kepada{
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.92);
     margin: 0 0 4px;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
   }
 
   .cover-name{
@@ -117,7 +142,7 @@
     color: #fff;
     margin: 0 0 16px;
     display: block;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
   }
 
   .cover-divider{
@@ -129,7 +154,7 @@
 
   #openBtn{
     border: 1px solid rgba(255,255,255,0.85);
-    background: transparent;
+    background: rgba(0,0,0,0.15);
     color: #fff;
     font-family: 'EB Garamond', serif;
     font-size: 0.85rem;
@@ -147,8 +172,9 @@
   .cover-sub{
     margin-top: 12px;
     font-size: 0.78rem;
-    color: rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.85);
     letter-spacing: 0.08em;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
   }
 
   /* titik indikator slideshow */
@@ -175,13 +201,14 @@
   #page{
     max-width: 640px;
     margin: 0 auto;
-    padding: 28px 16px 60px;
+    padding: 28px 22px 60px;
   }
 
   .songke-wrap{
     position: relative;
     padding: 14px;
     background: var(--songke-bg);
+    box-shadow: 0 10px 28px -10px rgba(0,0,0,0.55);
   }
 
   .songke-wrap .strip{ position: absolute; }
@@ -418,7 +445,7 @@
       <span class="cover-name">Tamu Undangan</span>
       <div class="cover-divider"></div>
       <button id="openBtn" type="button">Buka Undangan</button>
-      <p class="cover-sub">Hasbun</p>
+      <p class="cover-sub">Keluarga Hasbun</p>
     </div>
 
     <!-- titik indikator -->
@@ -482,11 +509,11 @@
           <table class="details">
             <tr>
               <td class="k">Tanggal</td><td class="s">:</td>
-              <td class="v">Rabu, 28 Oktober 2026</td>
+              <td class="v">Minggu, 15 November 2026</td>
             </tr>
             <tr>
               <td class="k">Waktu</td><td class="s">:</td>
-              <td class="v">Mulai pukul 18.00 WIB &ndash; selesai</td>
+              <td class="v">Mulai pukul 18.00 WITA &ndash; selesai</td>
             </tr>
             <tr>
               <td class="k">Tempat</td><td class="s">:</td>
@@ -506,7 +533,7 @@
             kami mohon maaf. Sekian dan terima kasih.
           </p>
 
-          <p class="signoff"><br>Keluarga Hasbun</p>
+          <p class="signoff">Keluarga Hasbun</p>
 
           <p class="footer-note">&mdash; Kumpul Kope &middot; 15 November 2026 &middot; Wae Bo &mdash;</p>
         </div>
@@ -527,9 +554,10 @@
           <div class="corner br"></div>
           <div class="center">
             <div class="map-icon">&#128205;</div>
-            <p class="location-name">Kaper</p>
-            <p class="location-desc">Lokasi acara Kumpul Kope Lian & Melan</p>
-            <a class="map-btn" href="https://maps.app.goo.gl/wrvx7NkErPqC6pQX6" target="_blank" rel="noopener noreferrer">Buka Lokasi</a>
+            <p class="location-name">Wae Bo</p>
+            <p class="location-desc">Lokasi acara Kumpul Kope Keluarga Hasbun</p>
+            <!-- GANTI link di href dengan link Google Maps Wae Bo yang tepat -->
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Wae+Bo+Labuan+Bajo" target="_blank" rel="noopener noreferrer">Buka Lokasi</a>
           </div>
         </div>
       </div>
@@ -560,21 +588,40 @@
     const musicBtn = document.getElementById('musicBtn');
     let playing = false;
     let ytReady = false;
+    let userStarted = false;
     let player;
 
+    // Ganti VIDEO_ID di bawah kalau ganti lagu.
     const VIDEO_ID = 'vw-NJkWl1v0';
 
     function onYouTubeIframeAPIReady(){
       player = new YT.Player('ytPlayer', {
         videoId: VIDEO_ID,
-        playerVars: { autoplay:0, controls:0, loop:1, playlist:VIDEO_ID, modestbranding:1, disablekb:1, fs:0 },
-        events: { onReady: () => { ytReady = true; } }
+        playerVars: { autoplay:0, controls:0, loop:1, playlist:VIDEO_ID, modestbranding:1, disablekb:1, fs:0, playsinline:1 },
+        events: { onReady: () => { ytReady = true; warmUp(); } }
       });
     }
     window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
+    // Pemanasan: muat lagu diam-diam (mute) supaya saat tombol diklik langsung bunyi
+    function warmUp(){
+      try {
+        player.mute();
+        player.playVideo();
+        setTimeout(() => {
+          if (!userStarted){
+            player.pauseVideo();
+            player.seekTo(0, true);
+          }
+        }, 1200);
+      } catch(e) {}
+    }
+
     function playMusic(){
+      userStarted = true;
       if (ytReady && player && player.playVideo){
+        player.unMute();
+        player.seekTo(0, true);
         player.playVideo();
         playing = true;
         musicBtn.classList.add('spinning');
